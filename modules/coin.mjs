@@ -39,8 +39,14 @@ export{coinFlip}
  */
 
 function coinFlips(flips) {
-  for(i = 0; i < flips; i++){
-    return Math.random() > .5 ? ("heads") : ("tails");
+  for(let i = 0; i < flips; i++){
+    i = Math.random();
+    if(i < 0.5){
+      result = "heads";
+    }else{
+      result = "tails";
+    }
+    return result;
   }
 }
 export{coinFlips}
