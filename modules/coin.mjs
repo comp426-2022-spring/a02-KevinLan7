@@ -38,15 +38,16 @@ function coinFlip() {
  */
 
 function coinFlips(flips) {
-  for(let i = 0; i < flips; i++){
-    i = Math.random();
-    if(i < 0.5){
-      result = "heads";
+  let results = new Array(flips);
+  for(let i = 0; i < results.length; i++){
+    results[i] = Math.random();
+    if(results[i] < 0.5){
+      results[i] = "heads";
     }else{
-      result = "tails";
+      results[i] = "tails";
     }
-    return result;
   }
+  return results;
 }
 
 /** Count multiple flips
