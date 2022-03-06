@@ -39,7 +39,10 @@ export{coinFlip}
  */
 
 function coinFlips(flips) {
-  return Math.random() > .5 ? ("heads") : ("tails");
+  groups = flips/2;
+  for(i = 0; i < groups; i++){
+    return Math.random() > .5 ? ("heads") : ("tails");
+  }
 }
 
 /** Count multiple flips
