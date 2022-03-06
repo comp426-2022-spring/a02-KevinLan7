@@ -44,6 +44,7 @@ function coinFlips(flips) {
     return Math.random() > .5 ? ("heads") : ("tails");
   }
 }
+export{coinFlips}
 
 /** Count multiple flips
  * 
