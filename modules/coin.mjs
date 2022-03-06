@@ -17,7 +17,7 @@
 function coinFlip() {
   return Math.random() > .5 ? ("heads") : ("tails");
 }
-
+export{coinFlip}
 
 /** Multiple coin flips
  * 
