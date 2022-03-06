@@ -15,8 +15,9 @@
  */
 
 function coinFlip() {
-
+  return Math.random() > .5 ? ("heads") : ("tails");
 }
+
 
 /** Multiple coin flips
  * 
