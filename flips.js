@@ -1,13 +1,14 @@
 let startNum = 2;
-let defaultFlip = 1;
-import {Require1} from "model";
-let require = Require1(import.meta.url);
-let minimist = require("minimist");
-let {exit} = require("process");
-import {coinFlips,countFlips} from "./modules/coin.mjs";
+import minimist from "minimist";
+import {coinFlip,coinFlips,countFlips,flipACoin} from "./modules/coin.mjs";
 let allArg = minimist(process.argv.slice(startNum));
 let argFlips = allArg["number"];
-let numFlips = argFlips || defaultFlip;
-let resultCoinFlips = coinFlips(numFlips);
-console.log(resultCoinFlips);
-console.log(countFlips(resultCoinFlips));
+if(allArg.number == undefined){
+    let flip = coinFlips(1);
+    console.log(flip);
+    console.log(countFlips(flip));
+}else{
+    let flip = coinFlips(argFlips);
+    console.log(flip);
+    console.log(countFlips(flip));
+}

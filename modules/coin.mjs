@@ -1,8 +1,3 @@
-let heads = "heads";
-let tails = "tails";
-let win = "win";
-let lose = "lose";
-
 /** Coin flip functions 
  * This module will emulate a coin flip given various conditions as parameters as defined below
  */
@@ -19,8 +14,8 @@ let lose = "lose";
  * 
  */
 
- export function coinFlip() {
-  return Math.random() > .5 ? heads : tails;
+function coinFlip() {
+  return Math.random() > .5 ? ("heads") : ("tails");
 }
 
 /** Multiple coin flips
@@ -42,10 +37,10 @@ let lose = "lose";
     ]
  */
 
-export function coinFlips(flips) {
+function coinFlips(flips) {
   let results = [];
   for(let i = 0; i < flips; i++){
-    results.push(coinFlip());
+    results[i] = coinFlip();
   }
   return results;
 }
@@ -63,19 +58,14 @@ export function coinFlips(flips) {
  * @returns {{ heads: number, tails: number }}
  */
 
-export function countFlips(array) {
+function countFlips(array) {
   let array2 = {heads:0,tails:0};
-  array.forEach(flip=>{
-    if(flip == heads){
+  for(let i = 0; i < array.length; i++){
+    if(array[i] == "heads"){
       array2.heads++;
-    }else if(flip == tails){
+    }else{
       array2.tails++;
     }
-  })
-  if(array2.heads == 0){
-    delete array2.heads;
-  }else if(array2.tails == 0){
-    delete array2.tails;
   }
   return array2;
 }
@@ -91,15 +81,12 @@ export function countFlips(array) {
  * returns: { call: 'tails', flip: 'heads', result: 'lose' }
  */
 
-export function flipACoin(call) {
-  if(call == heads || call == tails){
-    let result = {e1:call,e2:coinFlip(),e3:null};
-    result.e3 = ((result.e1 == result.e2) ? win : lose);
-    return result;
-  }else if(call == null || call == ""){
-    throw "Error: no input.";
+function flipACoin(call) {
+  let flip = coinFlip();
+  if(call != flip){
+    return {call:call, flip:flip, result:"lose"};
   }else{
-    throw "Usage: node guess-flip --call=[heads|tails]";
+    return {call:call, flip:flip, result:"win"};
   }
 }
 
@@ -108,3 +95,4 @@ export function flipACoin(call) {
  * 
  * Export all of your named functions
 */
+export{coinFlip,coinFlips,countFlips,flipACoin};
