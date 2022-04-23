@@ -1,7 +1,11 @@
-// Import the coinFlip function from your coin.mjs file
-import{coinFlip,coinFlips,countFlips,flipACoin} from "./modules/coin.mjs";
-// Call the coinFlip function and put the return into STDOUT
-console.log(coinFlip());
-console.log(coinFlips());
-console.log(countFlips());
-console.log(flipACoin());
+import {Require1} from "model";
+let require = Require1(import.meta.url);
+let minimist = require("minimist");
+let {exit} = require("process");
+import {coinFlips,countFlips} from "./modules/coin.mjs";
+let allArg = minimist(process.argv.slice(2));
+let argFlips = allArg["number"];
+let numFlips = argFlips || 1;
+let resultCoinFlips = coinFlips(numFlips);
+console.log(resultCoinFlips);
+console.log(countFlips(resultCoinFlips));

@@ -14,7 +14,7 @@
  * 
  */
 
-function coinFlip() {
+ function coinFlip() {
   return Math.random() > .5 ? ("heads") : ("tails");
 }
 
@@ -38,14 +38,9 @@ function coinFlip() {
  */
 
 function coinFlips(flips) {
-  let results = new Array(flips);
-  for(let i = 0; i < results.length; i++){
-    results[i] = Math.random();
-    if(results[i] < 0.5){
-      results[i] = "heads";
-    }else{
-      results[i] = "tails";
-    }
+  let results = [];
+  for(let i = 0; i < flips; i++){
+    results.push(coinFlip());
   }
   return results;
 }
@@ -64,7 +59,20 @@ function coinFlips(flips) {
  */
 
 function countFlips(array) {
-
+  let array2 = {heads:0,tails:0};
+  array.forEach(flip=>{
+    if(flip == "heads"){
+      array2.heads++;
+    }else if(flip == "tails"){
+      array2.tails++;
+    }
+  })
+  if(array2.heads == 0){
+    delete array2.heads;
+  }else if(array2.tails == 0){
+    delete array2.tails;
+  }
+  return array2;
 }
 
 /** Flip a coin!
@@ -79,7 +87,15 @@ function countFlips(array) {
  */
 
 function flipACoin(call) {
-
+  if(call == "heads" || call == "tails"){
+    let result = {e1:call,e2:coinFlip(),e3:null};
+    result.e3 = ((result.e1 == result.e2) ? ("win") : ("lose"));
+    return result;
+  }else if(call == null || call == ""){
+    throw "Error: no input.";
+  }else{
+    throw "Usage: node guess-flip --call=[heads|tails]";
+  }
 }
 
 
