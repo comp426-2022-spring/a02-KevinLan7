@@ -3,7 +3,7 @@ import minimist from "minimist";
 import {coinFlip,coinFlips,countFlips,flipACoin} from "./modules/coin.mjs";
 let allArg = minimist(process.argv.slice(startNum));
 let argFlips = allArg["number"];
-if(allArg.number == undefined){
+if(argFlips == undefined){
     let flip = coinFlips(1);
     console.log(flip);
     console.log(countFlips(flip));
