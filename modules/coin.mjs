@@ -1,3 +1,8 @@
+let heads = "heads";
+let tails = "tails";
+let win = "win";
+let lose = "lose";
+
 /** Coin flip functions 
  * This module will emulate a coin flip given various conditions as parameters as defined below
  */
@@ -14,8 +19,8 @@
  * 
  */
 
- function coinFlip() {
-  return Math.random() > .5 ? ("heads") : ("tails");
+ export function coinFlip() {
+  return Math.random() > .5 ? heads : tails;
 }
 
 /** Multiple coin flips
@@ -37,7 +42,7 @@
     ]
  */
 
-function coinFlips(flips) {
+export function coinFlips(flips) {
   let results = [];
   for(let i = 0; i < flips; i++){
     results.push(coinFlip());
@@ -58,12 +63,12 @@ function coinFlips(flips) {
  * @returns {{ heads: number, tails: number }}
  */
 
-function countFlips(array) {
+export function countFlips(array) {
   let array2 = {heads:0,tails:0};
   array.forEach(flip=>{
-    if(flip == "heads"){
+    if(flip == heads){
       array2.heads++;
-    }else if(flip == "tails"){
+    }else if(flip == tails){
       array2.tails++;
     }
   })
@@ -86,10 +91,10 @@ function countFlips(array) {
  * returns: { call: 'tails', flip: 'heads', result: 'lose' }
  */
 
-function flipACoin(call) {
-  if(call == "heads" || call == "tails"){
+export function flipACoin(call) {
+  if(call == heads || call == tails){
     let result = {e1:call,e2:coinFlip(),e3:null};
-    result.e3 = ((result.e1 == result.e2) ? ("win") : ("lose"));
+    result.e3 = ((result.e1 == result.e2) ? win : lose);
     return result;
   }else if(call == null || call == ""){
     throw "Error: no input.";
@@ -103,4 +108,3 @@ function flipACoin(call) {
  * 
  * Export all of your named functions
 */
-export{coinFlip,coinFlips,countFlips,flipACoin};
